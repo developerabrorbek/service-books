@@ -1,0 +1,1 @@
+export type { MinioUploadRequest } from './minio.interface'

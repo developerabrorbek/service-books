@@ -1,0 +1,7 @@
+export type { RetrieveBookListRequest } from './retrieve-book-list.interface'
+export type { CreateBookRequest } from './create-book.interface'
+export type { UpdateBookRequest } from './update-book.interface'
+export type { DeleteBookRequest } from './delete-book.interface'
+export type { RetrieveSingleBookRequest } from './retrieve-single-book.interface'
+export type { RetrieveSearchedBookRequest } from './retrieve-searched-books.interfaces'
+export type { RetrieveFilteredBookRequest } from './retrieve-filtered-books.interfaces'

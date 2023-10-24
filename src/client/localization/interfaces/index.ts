@@ -1,0 +1,2 @@
+export type { RetrieveSingleTranslateRequest, RetrieveSingleTranslateResponse } from './retrieve-single-translate.interface'
+export type { RetrieveTranslateList } from './retrieve-translate-list.interface'

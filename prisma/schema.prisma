@@ -1,0 +1,51 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
+
+generator service {
+  provider = "prisma-client-js"
+}
+
+enum BookStatus {
+  new    @map("new")
+  old    @map("old")
+  normal @map("normal")
+}
+
+model Genre {
+  id   String @default(dbgenerated("GEN_RANDOM_UUID()")) @map("id") @db.Uuid
+  name String @map("name") @db.VarChar(64)
+  book Book[]
+
+  @@id([id])
+  @@map("genre")
+}
+
+model Author {
+  id   String @default(dbgenerated("GEN_RANDOM_UUID()")) @map("id") @db.Uuid
+  name String @map("name") @db.VarChar(64)
+  book Book[]
+
+  @@id([id])
+  @@map("author")
+}
+
+model Book {
+  id          String     @default(dbgenerated("GEN_RANDOM_UUID()")) @map("id") @db.Uuid
+  title       String     @map("title") @db.VarChar(64)
+  description String     @map("description") @db.VarChar(64)
+  status      BookStatus @map("status")
+  language    String     @map("language") @db.VarChar(64)
+  price       Int        @map("price") @db.Integer
+  year        String     @map("year") @db.VarChar(4)
+  image       String     @map("image") @db.VarChar()
+  genreId     String     @map("genre_id") @db.Uuid
+  authorId    String     @map("author_id") @db.Uuid
+
+  genre  Genre  @relation(fields: [genreId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  author Author @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([id])
+  @@map("book")
+}
