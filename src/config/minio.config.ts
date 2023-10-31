@@ -18,6 +18,6 @@ export const minioConfigs = registerAs<MinioConfigOptions>(
     secretKey: process.env.MINIO_SECRET_KEY,
     endPoint: process.env.MINIO_ENDPOINT,
     bucket: process.env.MINIO_BUCKET,
-    port: process.env.MINIO_PORT ? parseInt(process.env.MINIO_PORT, 10) : 9090,
+    port: process.env.MINIO_PORT ? parseInt(process.env.MINIO_PORT, 10) : 9000,
   }),
 );
